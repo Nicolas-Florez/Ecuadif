@@ -1,0 +1,217 @@
+/* Variables CSS para mantener consistencia */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --light-color: #f4f4f9;
+    --text-color: #333;
+    --border-color: #ddd;
+  }
+  
+  /* Estilos base */
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--light-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  main {
+    display: flex;
+    height: calc(100vh - 120px);
+  }
+  
+  #menu {
+    width: 260px;
+    background: var(--secondary-color);
+    color: white;
+    padding: 1rem;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  #menu h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+  }
+  
+  #menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #menu li {
+    padding: 0.8rem;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 0.2rem 0;
+    transition: all 0.2s ease;
+  }
+  
+  #menu li:hover {
+    background: #3d5a80;
+    transform: translateX(5px);
+  }
+  
+  #contenido {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background: white;
+    border-left: 1px solid var(--border-color);
+  }
+  
+  /* Estilos para formularios interactivos */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  input, select {
+    margin: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 120px;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 600;
+  }
+  
+  button:hover {
+    background: #1b2633;
+  }
+  
+  /* Estilos para gráficas */
+  .grafica-container {
+    margin-top: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    background: #f9f9f9;
+  }
+  
+  /* Estilos para ejemplos */
+  .ejemplo {
+    background: #f8f9fa;
+    border-left: 4px solid var(--accent-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  
+  .ejemplo h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+  
+  /* Estilos para MathJax */
+  mjx-container {
+    font-size: 1.2em;
+    display: block;
+    text-align: center;
+    margin: 1em 0;
+  }
+  
+  /* Estilos para el footer */
+  footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Botón de menú móvil */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  /* Diseño responsive */
+  @media (max-width: 768px) {
+    main {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    #menu {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 999;
+      transform: translateX(-100%);
+    }
+    
+    #menu.active {
+      transform: translateX(0);
+    }
+    
+    #contenido {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+    
+    .menu-toggle {
+      display: block;
+    }
+    
+    input, select {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header {
+      font-size: 1.2rem;
+      padding: 0.8rem;
+    }
+    
+    #contenido {
+      padding: 0.8rem;
+    }
+    
+    .grafica-container {
+      padding: 0.5rem;
+    }
+  }

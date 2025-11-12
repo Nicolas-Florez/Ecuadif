@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aplicaciones de Ecuaciones Diferenciales</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Librería de Plotly para gráficas -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- Librería MathJax para fórmulas -->
+  <script>
+    window.MathJax = {
+      tex: { 
+        inlineMath: [["\\(", "\\)"]], 
+        displayMath: [["$$", "$$"]],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      svg: { fontCache: "global" },
+      options: {
+        skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Ecuadif</h1>
+  </header>
+
+  <main>
+    <nav id="menu">
+      <h2>Aplicaciones</h2>
+      <ul>
+        <li onclick="loadApp('enfriamiento')">Enfriamiento de Newton</li>
+        <li onclick="loadApp('poblacion')">Crecimiento Poblacional</li>
+        <li onclick="loadApp('ofertaDemanda')">Oferta y Demanda</li>
+        <li onclick="loadApp('interes')">Interés Compuesto</li>
+        <li onclick="loadApp('mezclas')">Mezclas</li>
+        <li onclick="loadApp('epidemias')">Epidemias</li>
+        <li onclick="loadApp('circuitos')">Circuitos Eléctricos</li>
+        <li onclick="loadApp('pendulo')">Péndulo Simple</li>
+        <li onclick="loadApp('armonico')">Movimiento Armónico Simple</li>
+      </ul>
+    </nav>
+
+    <section id="contenido">
+      <h2>Bienvenido al Explorador de Ecuaciones Diferenciales</h2>
+      <p>Selecciona una aplicación del menú para explorar cómo se aplican las ecuaciones diferenciales en distintos contextos científicos y de ingeniería.</p>
+      <p>Cada sección incluye:</p>
+      <ul>
+        <li>Explicación teórica del modelo</li>
+        <li>Ecuación diferencial y su solución</li>
+        <li>Ejemplo práctico resuelto</li>
+        <li>Simulador interactivo con gráficas</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Desarrollado por Dev — 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
