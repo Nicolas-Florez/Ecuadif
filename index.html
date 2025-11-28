@@ -28,41 +28,121 @@
 </head>
 <body>
   <header>
-    <h1>Ecuadif</h1>
+    <div class="header-content">
+      <h1>Ecuadif</h1>
+      <p class="subtitle">Aplicaciones de Ecuaciones Diferenciales</p>
+    </div>
   </header>
 
   <main>
     <nav id="menu">
       <h2>Aplicaciones</h2>
-      <ul>
-        <li onclick="loadApp('enfriamiento')">Enfriamiento de Newton</li>
-        <li onclick="loadApp('poblacion')">Crecimiento Poblacional</li>
-        <li onclick="loadApp('ofertaDemanda')">Oferta y Demanda</li>
-        <li onclick="loadApp('interes')">Interés Compuesto</li>
-        <li onclick="loadApp('mezclas')">Mezclas</li>
-        <li onclick="loadApp('epidemias')">Epidemias</li>
-        <li onclick="loadApp('circuitos')">Circuitos Eléctricos</li>
-        <li onclick="loadApp('pendulo')">Péndulo Simple</li>
-        <li onclick="loadApp('armonico')">Movimiento Armónico Simple</li>
+      <div class="search-container">
+        <input type="text" id="menu-search" placeholder="🔍 Buscar aplicación..." onkeyup="filtrarMenu()">
+      </div>
+      <ul id="menu-list">
+        <li onclick="loadApp('enfriamiento')" data-name="enfriamiento newton">Enfriamiento de Newton</li>
+        <li onclick="loadApp('poblacion')" data-name="crecimiento poblacional">Crecimiento Poblacional</li>
+        <li onclick="loadApp('ofertaDemanda')" data-name="oferta demanda">Oferta y Demanda</li>
+        <li onclick="loadApp('interes')" data-name="interés compuesto">Interés Compuesto</li>
+        <li onclick="loadApp('mezclas')" data-name="mezclas">Mezclas</li>
+        <li onclick="loadApp('epidemias')" data-name="epidemias">Epidemias</li>
+        <li onclick="loadApp('circuitos')" data-name="circuitos eléctricos">Circuitos Eléctricos</li>
+        <li onclick="loadApp('pendulo')" data-name="péndulo simple">Péndulo Simple</li>
+        <li onclick="loadApp('armonico')" data-name="movimiento armónico">Movimiento Armónico Simple</li>
       </ul>
     </nav>
 
     <section id="contenido">
-      <h2>Bienvenido al Explorador de Ecuaciones Diferenciales</h2>
-      <p>Selecciona una aplicación del menú para explorar cómo se aplican las ecuaciones diferenciales en distintos contextos científicos y de ingeniería.</p>
-      <p>Cada sección incluye:</p>
-      <ul>
-        <li>Explicación teórica del modelo</li>
-        <li>Ecuación diferencial y su solución</li>
-        <li>Ejemplo práctico resuelto</li>
-        <li>Simulador interactivo con gráficas</li>
-      </ul>
+      <div class="welcome-section">
+        <h2>Bienvenido al Explorador de Ecuaciones Diferenciales</h2>
+        <p class="intro-text">Las <strong>ecuaciones diferenciales</strong> son herramientas matemáticas fundamentales que describen cómo cambian las cantidades en relación con otras. Se aplican en diversas áreas como física, biología, economía, ingeniería y muchas otras disciplinas científicas.</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>📚 Teoría Completa</h3>
+            <p>Explicaciones detalladas de cada modelo matemático con fundamentos teóricos sólidos.</p>
+          </div>
+          <div class="feature-card">
+            <h3>📐 Ecuaciones y Soluciones</h3>
+            <p>Ecuaciones diferenciales con sus soluciones paso a paso usando notación matemática precisa.</p>
+          </div>
+          <div class="feature-card">
+            <h3>💡 Ejemplos Prácticos</h3>
+            <p>Problemas resueltos con aplicaciones reales para comprender mejor los conceptos.</p>
+          </div>
+          <div class="feature-card">
+            <h3>📊 Simuladores Interactivos</h3>
+            <p>Gráficas dinámicas e interactivas que te permiten visualizar el comportamiento de los modelos.</p>
+          </div>
+        </div>
+
+        <div class="applications-preview">
+          <h3>Aplicaciones Disponibles</h3>
+          <div class="app-cards">
+            <div class="app-card" onclick="loadApp('enfriamiento')">
+              <h4>🌡️ Enfriamiento de Newton</h4>
+              <p>Modela el cambio de temperatura de objetos en ambientes con temperatura constante.</p>
+            </div>
+            <div class="app-card" onclick="loadApp('poblacion')">
+              <h4>👥 Crecimiento Poblacional</h4>
+              <p>Describe el crecimiento de poblaciones con limitaciones de recursos (modelo logístico).</p>
+            </div>
+            <div class="app-card" onclick="loadApp('epidemias')">
+              <h4>🦠 Modelo SIR para Epidemias</h4>
+              <p>Analiza la propagación de enfermedades infecciosas en poblaciones.</p>
+            </div>
+            <div class="app-card" onclick="loadApp('circuitos')">
+              <h4>⚡ Circuitos Eléctricos</h4>
+              <p>Estudia el comportamiento de circuitos RL, RC y RLC con ecuaciones diferenciales.</p>
+            </div>
+            <div class="app-card" onclick="loadApp('mezclas')">
+              <h4>🧪 Problemas de Mezclas</h4>
+              <p>Modela la concentración de sustancias en tanques con entrada y salida de líquidos.</p>
+            </div>
+            <div class="app-card" onclick="loadApp('interes')">
+              <h4>💰 Interés Compuesto</h4>
+              <p>Calcula el crecimiento de inversiones con capitalización continua.</p>
+            </div>
+            <div class="app-card" onclick="loadApp('ofertaDemanda')">
+              <h4>📈 Oferta y Demanda</h4>
+              <p>Analiza el ajuste de precios en función del desequilibrio entre oferta y demanda.</p>
+            </div>
+            <div class="app-card" onclick="loadApp('pendulo')">
+              <h4>🔄 Péndulo Simple</h4>
+              <p>Describe el movimiento oscilatorio de un péndulo con pequeñas oscilaciones.</p>
+            </div>
+            <div class="app-card" onclick="loadApp('armonico')">
+              <h4>🌊 Movimiento Armónico Simple</h4>
+              <p>Modela sistemas oscilatorios como resortes y péndulos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3>¿Qué son las Ecuaciones Diferenciales?</h3>
+          <p>Una <strong>ecuación diferencial</strong> es una ecuación que relaciona una función con sus derivadas. Estas ecuaciones son fundamentales para modelar fenómenos dinámicos donde las cantidades cambian continuamente con el tiempo o el espacio.</p>
+          <p>Las ecuaciones diferenciales permiten:</p>
+          <ul class="benefits-list">
+            <li>Predecir el comportamiento futuro de sistemas dinámicos</li>
+            <li>Modelar fenómenos naturales y procesos físicos</li>
+            <li>Optimizar sistema s de ingeniería y control</li>
+            <li>Entender la evolución de poblaciones y ecosistemas</li>
+            <li>Analizar circuitos eléctricos y sistemas mecánicos</li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>Desarrollado por Dev — 2025</p>
+    <p>Desarrollado por Nicolas Florez — 2025</p>
   </footer>
+
+  <!-- Botón flotante para volver al inicio -->
+  <button id="back-to-top" onclick="scrollToTop()" title="Volver al inicio">
+    ↑
+  </button>
 
   <script src="script.js"></script>
 </body>

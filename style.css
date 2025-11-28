@@ -1,16 +1,29 @@
-/* Variables CSS para mantener consistencia */
+/* Variables CSS para mantener consistencia - Paleta Marrón Claro */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --accent-color: #3498db;
-    --light-color: #f4f4f9;
-    --text-color: #333;
-    --border-color: #ddd;
+    --primary-color: #8B6F47;
+    --secondary-color: #A0826D;
+    --accent-color: #C9A961;
+    --light-color: #F5E6D3;
+    --text-color: #4A3C2A;
+    --border-color: #D4C4B0;
+    --background-card: #FAF5EF;
+    --hover-color: #9B7F57;
+    --shadow-color: rgba(139, 111, 71, 0.15);
   }
   
   /* Estilos base */
-  body {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
     font-family: "Segoe UI", sans-serif;
     background: var(--light-color);
     color: var(--text-color);
@@ -18,26 +31,96 @@
   }
   
   header {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     text-align: center;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .header-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .header-content h1 {
+    margin: 0;
     font-size: 1.5rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .subtitle {
+    margin: 0.2rem 0 0 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    font-weight: 300;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
   }
   
   main {
     display: flex;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 65px);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
   
   #menu {
     width: 260px;
-    background: var(--secondary-color);
+    background: linear-gradient(180deg, var(--secondary-color) 0%, var(--primary-color) 100%);
     color: white;
     padding: 1rem;
     overflow-y: auto;
     transition: transform 0.3s ease;
+    box-shadow: 2px 0 8px var(--shadow-color);
+  }
+
+  .search-container {
+    margin-bottom: 1rem;
+  }
+
+  #menu-search {
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  #menu-search::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  #menu-search:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.2);
+  }
+
+  #menu-list li.hidden {
+    display: none;
   }
   
   #menu h2 {
@@ -58,19 +141,48 @@
     border-radius: 6px;
     margin: 0.2rem 0;
     transition: all 0.2s ease;
+    border-left: 3px solid transparent;
   }
-  
+
   #menu li:hover {
-    background: #3d5a80;
+    background: var(--hover-color);
     transform: translateX(5px);
+    border-left-color: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #menu li.active {
+    background: var(--hover-color);
+    border-left-color: var(--accent-color);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   #contenido {
     flex: 1;
     padding: 2rem;
     overflow-y: auto;
-    background: white;
+    overflow-x: hidden;
+    background: var(--light-color);
     border-left: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #contenido h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+  }
+
+  #contenido h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
   
   /* Estilos para formularios interactivos */
@@ -86,48 +198,80 @@
   
   input, select {
     margin: 0.25rem;
-    padding: 0.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
+    padding: 0.6rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
     width: 120px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.2);
+    background: white;
   }
   
   button {
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.5rem;
     background: var(--primary-color);
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
   }
-  
+
   button:hover {
-    background: #1b2633;
+    background: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+  }
+
+  button:active {
+    transform: translateY(0);
   }
   
-  /* Estilos para gráficas */
+  /* Estilos para gráficas - estilo simple como grafica.css */
   .grafica-container {
     margin-top: 1.5rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1rem;
     background: #f9f9f9;
+    min-height: 400px;
+  }
+
+  .grafica-container > div {
+    min-height: 400px;
   }
   
   /* Estilos para ejemplos */
   .ejemplo {
-    background: #f8f9fa;
-    border-left: 4px solid var(--accent-color);
-    padding: 1rem;
-    margin: 1rem 0;
-    border-radius: 0 4px 4px 0;
+    background: linear-gradient(135deg, var(--background-card) 0%, var(--light-color) 100%);
+    border-left: 5px solid var(--accent-color);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px var(--shadow-color);
   }
-  
+
   .ejemplo h4 {
     margin-top: 0;
     color: var(--primary-color);
+    font-size: 1.3rem;
+  }
+
+  .ejemplo p {
+    line-height: 1.7;
   }
   
   /* Estilos para MathJax */
@@ -138,15 +282,241 @@
     margin: 1em 0;
   }
   
+  /* Estilos para la página de bienvenida */
+  .welcome-section {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .feature-card {
+    background: linear-gradient(135deg, var(--background-card) 0%, var(--light-color) 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+    border-color: var(--accent-color);
+  }
+
+  .feature-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+  }
+
+  .feature-card p {
+    margin-bottom: 0;
+    color: #666;
+  }
+
+  .applications-preview {
+    margin: 3rem 0;
+  }
+
+  .applications-preview h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .app-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .app-card {
+    background: var(--background-card);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+  }
+
+  .app-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+    background: white;
+  }
+
+  .app-card h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+  }
+
+  .app-card p {
+    margin-bottom: 0;
+    color: #666;
+    font-size: 0.95rem;
+  }
+
+  .info-section {
+    background: var(--background-card);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 3rem 0;
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+  }
+
+  .info-section h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .benefits-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .benefits-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* Estilos para contenido de Unidad 10 */
+  .unidad10-content {
+    margin-top: 2rem;
+  }
+
+  .placeholder-text {
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.7;
+    text-align: center;
+    padding: 2rem;
+    background: var(--background-card);
+    border-radius: 8px;
+  }
+
+  /* Media queries para responsive */
+  @media (max-width: 1024px) {
+    .header-content h1 {
+      font-size: 1.6rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+    }
+
+    header {
+      padding: 1.2rem 1rem;
+    }
+
+    main {
+      height: calc(100vh - 90px);
+    }
+  }
+
+  /* Mejoras adicionales para móvil */
+  @media (max-width: 768px) {
+    /* Asegurar que los botones de ejemplo se vean bien */
+    button[onclick*="loadEjemplo"],
+    button[onclick*="loadApp"] {
+      width: 100% !important;
+      margin: 0.5rem 0 !important;
+    }
+
+    /* Mejorar espaciado en formularios */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* Ajustar resultados */
+    .ejemplo[style*="background"] {
+      padding: 1rem !important;
+      font-size: 0.95rem;
+    }
+
+    /* Mejorar scroll horizontal en gráficas */
+    .grafica-container {
+      padding: 0.8rem;
+    }
+
+    /* Botones flotantes en móvil */
+    #back-to-top {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+      bottom: 1rem;
+      right: 1rem;
+    }
+
+    #menu-search {
+      font-size: 1rem;
+      padding: 0.7rem;
+    }
+
+    /* Header responsive en móvil */
+    header {
+      padding: 0.8rem 0.5rem;
+    }
+
+    .header-content h1 {
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+    main {
+      height: calc(100vh - 70px);
+    }
+  }
+
   /* Estilos para el footer */
   footer {
     background: var(--primary-color);
     color: white;
     text-align: center;
-    padding: 0.5rem;
+    padding: 1rem;
     position: relative;
     bottom: 0;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    margin-top: 2rem;
   }
   
   /* Botón de menú móvil */
@@ -162,6 +532,172 @@
     padding: 0.5rem;
     z-index: 1000;
     cursor: pointer;
+    box-shadow: 0 2px 8px var(--shadow-color);
+  }
+
+  /* Botón flotante para volver al inicio */
+  #back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+
+  #back-to-top:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+  }
+
+  #back-to-top.show {
+    display: block;
+  }
+
+  /* Animaciones suaves */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  #contenido {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Indicador de carga */
+  .loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Animaciones para mensajes */
+  @keyframes slideIn {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+  }
+
+  /* Botón de exportar gráfica */
+  .export-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px var(--shadow-color);
+  }
+
+  .export-btn:hover {
+    background: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--text-color);
+    color: var(--light-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Mejoras en inputs */
+  input:invalid,
+  select:invalid {
+    border-color: #e74c3c;
+  }
+
+  input:valid,
+  select:valid {
+    border-color: #27ae60;
+  }
+
+  /* Mejora en botones de ejemplo */
+  button[onclick*="loadEjemplo"] {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  button[onclick*="loadEjemplo"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+  }
+
+  button[onclick*="loadEjemplo"]:active {
+    transform: translateY(0);
   }
   
   /* Diseño responsive */
@@ -169,16 +705,34 @@
     main {
       flex-direction: column;
       height: auto;
+      min-height: calc(100vh - 120px);
+    }
+    
+    header {
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content h1 {
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
     }
     
     #menu {
-      width: 100%;
+      width: 280px;
       position: fixed;
       top: 0;
       left: 0;
       height: 100vh;
       z-index: 999;
       transform: translateX(-100%);
+      box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2);
     }
     
     #menu.active {
@@ -187,31 +741,260 @@
     
     #contenido {
       width: 100%;
-      padding: 1rem;
-      margin-top: 3rem;
+      padding: 1.5rem 1rem;
+      margin-top: 0;
+      min-height: calc(100vh - 120px);
+    }
+
+    #contenido h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    #contenido h3 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .app-cards {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .feature-card, .app-card {
+      padding: 1.2rem;
     }
     
     .menu-toggle {
       display: block;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
     
     input, select {
       width: 100%;
-      max-width: 200px;
+      max-width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      font-size: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .ejemplo {
+      padding: 1.2rem;
+      margin: 1.2rem 0;
+    }
+
+    .ejemplo h4 {
+      font-size: 1.1rem;
+    }
+
+    .grafica-container {
+      padding: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .info-section {
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .welcome-section {
+      padding: 0;
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Botones de ejemplo en móvil */
+    div[style*="display: flex"] {
+      flex-direction: column !important;
+      gap: 0.8rem !important;
+    }
+
+    div[style*="display: flex"] button {
+      width: 100%;
+      padding: 1.2rem !important;
+      font-size: 1rem !important;
     }
   }
   
   @media (max-width: 480px) {
     header {
-      font-size: 1.2rem;
-      padding: 0.8rem;
+      padding: 1rem 0.8rem;
+    }
+    
+    .header-content h1 {
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
     }
     
     #contenido {
-      padding: 0.8rem;
+      padding: 1rem 0.8rem;
+    }
+
+    #contenido h2 {
+      font-size: 1.4rem;
+    }
+
+    #contenido h3 {
+      font-size: 1.2rem;
     }
     
     .grafica-container {
       padding: 0.5rem;
+      margin: 1rem 0;
+      min-height: 400px;
+      overflow: visible;
+      width: 100%;
+    }
+
+    .grafica-container > div {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: 360px !important;
+      height: 360px !important;
+      overflow: visible !important;
+    }
+
+    .grafica-container .plotly {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: 360px !important;
+      height: 360px !important;
+      overflow: visible !important;
+    }
+
+    .grafica-container svg {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: 360px !important;
+      height: 360px !important;
+      overflow: visible !important;
+    }
+
+    /* Herramientas abajo derecha y tamaño reducido en pantallas pequeñas */
+    .grafica-container .modebar {
+      top: auto !important;
+      bottom: 2px !important;
+      right: 2px !important;
+      left: auto !important;
+      position: absolute !important;
+      z-index: 10 !important;
+      font-size: 8px !important;
+    }
+
+    .grafica-container .modebar-btn {
+      width: 18px !important;
+      height: 18px !important;
+      padding: 1px !important;
+    }
+
+    .grafica-container .modebar-btn svg {
+      width: 10px !important;
+      height: 10px !important;
+    }
+
+    .grafica-container .js-plotly-plot .plotly .gtitle {
+      font-size: 0.95rem !important;
+      margin-top: 0.5rem !important;
+      padding-top: 0.5rem !important;
+    }
+
+    .grafica-container .js-plotly-plot .plotly .xtitle,
+    .grafica-container .js-plotly-plot .plotly .ytitle {
+      font-size: 0.8rem !important;
+    }
+
+    .grafica-container .js-plotly-plot .plotly .xtick,
+    .grafica-container .js-plotly-plot .plotly .ytick {
+      font-size: 0.75rem !important;
+    }
+
+    .ejemplo {
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .feature-card, .app-card {
+      padding: 1rem;
+    }
+
+    .info-section {
+      padding: 1.2rem;
+    }
+
+    .menu-toggle {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.9rem;
+      top: 0.5rem;
+      left: 0.5rem;
+    }
+
+    #menu {
+      width: 100%;
+    }
+
+    /* Ajustes para MathJax en móvil */
+    mjx-container {
+      font-size: 1em !important;
+      overflow-x: auto;
+      display: block;
+    }
+
+    /* Ajustes para tablas y listas */
+    ul, ol {
+      padding-left: 1.2rem;
+    }
+
+    /* Mejorar scroll en móvil */
+    #contenido {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Overlay para cerrar menú en móvil */
+  @media (max-width: 768px) {
+    #menu.active::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 280px;
+      width: calc(100% - 280px);
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+
+    #menu.active {
+      width: 280px;
     }
   }
