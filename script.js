@@ -1,6 +1,38 @@
 
+// Helper function para crear layouts responsive
+function crearLayoutResponsive(titulo, xaxisTitle, yaxisTitle, opciones = {}) {
+  const isMobile = window.innerWidth <= 768;
+  const isSmallMobile = window.innerWidth <= 480;
+  const graphHeight = isSmallMobile ? 300 : (isMobile ? 350 : 400);
+  
+  const layout = {
+    title: {
+      text: titulo,
+      font: { size: isSmallMobile ? 14 : (isMobile ? 16 : 18) }
+    },
+    xaxis: { 
+      title: xaxisTitle,
+      titlefont: { size: isSmallMobile ? 11 : 12 }
+    },
+    yaxis: { 
+      title: yaxisTitle,
+      titlefont: { size: isSmallMobile ? 11 : 12 }
+    },
+    height: graphHeight,
+    autosize: true,
+    margin: {
+      l: isSmallMobile ? 50 : (isMobile ? 60 : 70),
+      r: isSmallMobile ? 20 : 30,
+      t: isSmallMobile ? 50 : (isMobile ? 60 : 70),
+      b: isSmallMobile ? 50 : 60
+    },
+    ...opciones
+  };
+  return layout;
+}
+
 // Estado global para almacenar datos entre aplicaciones
-  let appState = {
+let appState = {
     enfriamiento: { T0: 80, Ta: 28, k: -0.4271 },
     poblacion: { P0: 100, r: 0.1, K: 1000 },
     ofertaDemanda: { a: 10, b: 0.5, c: 5, d: 0.3 },
@@ -531,13 +563,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Enfriamiento de Newton - Ejemplo 1",
-      xaxis: { title: "Tiempo (min)" },
-      yaxis: { title: "Temperatura (°C)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Enfriamiento de Newton - Ejemplo 1",
+      "Tiempo (min)",
+      "Temperatura (°C)"
+    );
     
     Plotly.newPlot("grafica-ej1", [trace], layout);
     
@@ -621,21 +651,21 @@
       marker: { color: 'red', size: 10, symbol: 'x' }
     };
     
-    const layout = {
-      title: "Enfriamiento de Newton - Ejemplo 2",
-      xaxis: { title: "Tiempo (horas, t=0 a las 12:00 m)" },
-      yaxis: { title: "Temperatura (°F)" },
-      height: 400,
-      autosize: true,
-      shapes: [{
-        type: 'line',
-        x0: t_muerte,
-        x1: t_muerte,
-        y0: Tm,
-        y1: Tmuerte,
-        line: { color: '#e74c3c', width: 2, dash: 'dash' }
-      }]
-    };
+    const layout = crearLayoutResponsive(
+      "Enfriamiento de Newton - Ejemplo 2",
+      "Tiempo (horas, t=0 a las 12:00 m)",
+      "Temperatura (°F)",
+      {
+        shapes: [{
+          type: 'line',
+          x0: t_muerte,
+          x1: t_muerte,
+          y0: Tm,
+          y1: Tmuerte,
+          line: { color: '#e74c3c', width: 2, dash: 'dash' }
+        }]
+      }
+    );
     
     Plotly.newPlot("grafica-ej2", [trace, traceMuerte], layout);
     
@@ -744,13 +774,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Crecimiento Poblacional - Ejemplo 1",
-      xaxis: { title: "Tiempo (años)" },
-      yaxis: { title: "Población" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Crecimiento Poblacional - Ejemplo 1",
+      "Tiempo (años)",
+      "Población"
+    );
     
     Plotly.newPlot("grafica-crec1", [trace], layout);
     
@@ -810,13 +838,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Crecimiento Poblacional - Ejemplo 2 (Lobos)",
-      xaxis: { title: "Tiempo (años)" },
-      yaxis: { title: "Población" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Crecimiento Poblacional - Ejemplo 2 (Lobos)",
+      "Tiempo (años)",
+      "Población"
+    );
     
     Plotly.newPlot("grafica-crec2", [trace], layout);
     
@@ -950,13 +976,11 @@
       line: { color: 'red', width: 1, dash: 'dash' }
     };
     
-    const layout = {
-      title: "Oferta y Demanda - Ejemplo 1",
-      xaxis: { title: "Tiempo" },
-      yaxis: { title: "Precio (euros)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Oferta y Demanda - Ejemplo 1",
+      "Tiempo",
+      "Precio (euros)"
+    );
     
     Plotly.newPlot("grafica-od1", [trace, traceEquilibrio], layout);
     
@@ -1041,13 +1065,11 @@
       line: { color: 'red', width: 1, dash: 'dash' }
     };
     
-    const layout = {
-      title: "Oferta y Demanda - Ejemplo 2",
-      xaxis: { title: "Tiempo" },
-      yaxis: { title: "Precio" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Oferta y Demanda - Ejemplo 2",
+      "Tiempo",
+      "Precio"
+    );
     
     Plotly.newPlot("grafica-od2", [trace, traceEquilibrio], layout);
     
@@ -1126,13 +1148,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Interés Compuesto - Ejemplo 1",
-      xaxis: { title: "Tiempo (años)" },
-      yaxis: { title: "Monto ($)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Interés Compuesto - Ejemplo 1",
+      "Tiempo (años)",
+      "Monto ($)"
+    );
     
     Plotly.newPlot("grafica-int", [trace], layout);
     
@@ -1244,13 +1264,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Mezclas - Ejemplo 1 (Tanque con Sal)",
-      xaxis: { title: "Tiempo (min)" },
-      yaxis: { title: "Cantidad de sal (gr)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Mezclas - Ejemplo 1 (Tanque con Sal)",
+      "Tiempo (min)",
+      "Cantidad de sal (gr)"
+    );
     
     Plotly.newPlot("grafica-mez1", [trace], layout);
     
@@ -1323,13 +1341,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Mezclas - Ejemplo 2 (Harry Potter)",
-      xaxis: { title: "Tiempo (min)" },
-      yaxis: { title: "Cantidad de DUPREE (onzas)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Mezclas - Ejemplo 2 (Harry Potter)",
+      "Tiempo (min)",
+      "Cantidad de DUPREE (onzas)"
+    );
     
     Plotly.newPlot("grafica-mez2", [trace], layout);
     
@@ -1437,13 +1453,11 @@
       line: { color: 'red', width: 1, dash: 'dash' }
     };
     
-    const layout = {
-      title: "Epidemias - Ejemplo 1 (Gripe en Florida)",
-      xaxis: { title: "Tiempo (semanas)" },
-      yaxis: { title: "Personas infectadas (miles)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Epidemias - Ejemplo 1 (Gripe en Florida)",
+      "Tiempo (semanas)",
+      "Personas infectadas (miles)"
+    );
     
     Plotly.newPlot("grafica-epi1", [trace, traceLimite], layout);
     
@@ -1544,13 +1558,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Circuitos - Ejemplo 1 (Circuito RL)",
-      xaxis: { title: "Tiempo (s)" },
-      yaxis: { title: "Corriente (A)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Circuitos - Ejemplo 1 (Circuito RL)",
+      "Tiempo (s)",
+      "Corriente (A)"
+    );
     
     Plotly.newPlot("grafica-cir1", [trace], layout);
     
@@ -1611,13 +1623,11 @@
       line: { color: '#e74c3c', width: 2 }
     };
     
-    const layout = {
-      title: "Circuitos - Ejemplo 2 (Circuito RC)",
-      xaxis: { title: "Tiempo (s)" },
-      yaxis: { title: "Carga (C) / Corriente (A)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Circuitos - Ejemplo 2 (Circuito RC)",
+      "Tiempo (s)",
+      "Carga (C) / Corriente (A)"
+    );
     
     Plotly.newPlot("grafica-cir2", [traceQ, traceI], layout);
     
@@ -1713,14 +1723,15 @@
       yaxis: 'y2'
     };
     
-    const layout = {
-      title: "Péndulo Simple - Ejemplo 1",
-      xaxis: { title: "Tiempo (s)" },
-      yaxis: { title: "Ángulo (rad)", side: "left" },
-      yaxis2: { title: "Velocidad (ft/s)", side: "right", overlaying: "y" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Péndulo Simple - Ejemplo 1",
+      "Tiempo (s)",
+      "Ángulo (rad)",
+      {
+        yaxis: { title: "Ángulo (rad)", side: "left" },
+        yaxis2: { title: "Velocidad (ft/s)", side: "right", overlaying: "y" }
+      }
+    );
     
     Plotly.newPlot("grafica-pen1", [traceTheta, traceVel], layout);
     
@@ -1818,13 +1829,11 @@
       line: { color: '#8B6F47', width: 3 }
     };
     
-    const layout = {
-      title: "Movimiento Armónico Simple - Ejemplo 1",
-      xaxis: { title: "Tiempo (s)" },
-      yaxis: { title: "Posición (ft)" },
-      height: 400,
-      autosize: true
-    };
+    const layout = crearLayoutResponsive(
+      "Movimiento Armónico Simple - Ejemplo 1",
+      "Tiempo (s)",
+      "Posición (ft)"
+    );
     
     Plotly.newPlot("grafica-arm1", [trace], layout);
     

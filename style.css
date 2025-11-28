@@ -248,10 +248,13 @@
     padding: 1rem;
     background: #f9f9f9;
     min-height: 400px;
+    width: 100%;
+    overflow-x: auto;
   }
 
   .grafica-container > div {
     min-height: 400px;
+    width: 100%;
   }
   
   /* Estilos para ejemplos */
@@ -468,6 +471,12 @@
     /* Mejorar scroll horizontal en gráficas */
     .grafica-container {
       padding: 0.8rem;
+      min-height: 350px;
+      margin-top: 1rem;
+    }
+
+    .grafica-container > div {
+      min-height: 350px;
     }
 
     /* Botones flotantes en móvil */
@@ -872,32 +881,29 @@
     .grafica-container {
       padding: 0.5rem;
       margin: 1rem 0;
-      min-height: 400px;
-      overflow: visible;
+      min-height: 300px;
+      overflow-x: auto;
       width: 100%;
     }
 
     .grafica-container > div {
       width: 100% !important;
       max-width: 100% !important;
-      min-height: 360px !important;
-      height: 360px !important;
+      min-height: 300px !important;
       overflow: visible !important;
     }
 
     .grafica-container .plotly {
       width: 100% !important;
       max-width: 100% !important;
-      min-height: 360px !important;
-      height: 360px !important;
+      min-height: 300px !important;
       overflow: visible !important;
     }
 
     .grafica-container svg {
       width: 100% !important;
       max-width: 100% !important;
-      min-height: 360px !important;
-      height: 360px !important;
+      min-height: 300px !important;
       overflow: visible !important;
     }
 
